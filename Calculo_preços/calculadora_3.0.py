@@ -12,11 +12,11 @@ while contador >= 0:
     custo = input('Digite o peço de custo, ou "sair": ')
     if custo == 'sair' or custo == 'Sair' or custo == 'SAIR':
         break
-    total = float(custo)
-    soma = float(custo)
-    for contador in range(len(impostos)):
-        total += soma * (impostos[contador] / 100)
-        contador += 1
+    soma = 0
+    custo = float(custo)
+    for x in impostos:  # melhoramento da implementação do laço for em relação a versão anterior
+        soma += custo * (x / 100)
 # Nessa versão as porcentagens dos impostos não estão sendo somados e sim aplicadas separadamente ao total
-    total += total * (lucro / 100)  # Porcentagem de lucro aplicada separadamente após a aplicação dos impostos
+    lucro = (custo + soma) * (lucro / 100)  # Porcentagem de lucro aplicada separadamente após a aplicação dos impostos
+    total = custo + soma + lucro
     print(f'Preço de venda R${total:.2f}')
